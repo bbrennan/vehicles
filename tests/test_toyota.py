@@ -1,4 +1,5 @@
 import tempfile
+import hashlib
 import subprocess
 import unittest
 from pathlib import Path
@@ -8,6 +9,7 @@ from unittest.mock import patch
 
 from vehicle_catalog.pipeline import encode, write_once
 from vehicle_catalog.layout import parse_layout
+from vehicle_catalog.download_pdfs import download_pdfs, targets
 from vehicle_catalog.toyota import (
     BASE,
     STEMS,
@@ -18,6 +20,61 @@ from vehicle_catalog.toyota import (
 
 
 class ToyotaTests(unittest.TestCase):
+    def test_pdf_only_download_and_verified_rerun(self):
+        payload = b"%PDF-1.4 synthetic original"
+        checksum = hashlib.sha256(payload).hexdigest()
+        rows = [{"url": BASE + "2026/camry.pdf", "sha256": checksum}]
+
+        def retrieve(source, raw, **kwargs):
+            write_once(raw / f"{checksum}.blob", payload)
+            return SimpleNamespace(
+                sha256=checksum,
+                model_dump=lambda **kwargs: {
+                    "sha256": checksum,
+                    "source": {"url": source.url},
+                },
+            )
+
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch(
+                "vehicle_catalog.download_pdfs.fetch", side_effect=retrieve
+            ) as fetch_pdf,
+        ):
+            output = Path(directory)
+            result = download_pdfs(rows, output)
+            self.assertEqual(result[0]["status"], "downloaded")
+            path = output / result[0]["filename"]
+            self.assertFalse(path.is_symlink())
+            self.assertEqual(path.read_bytes(), payload)
+            fetch_pdf.reset_mock()
+            self.assertEqual(
+                download_pdfs(rows, output)[0]["status"], "verified_existing"
+            )
+            fetch_pdf.assert_not_called()
+            changed = [{**rows[0], "sha256": "0" * 64}]
+            self.assertEqual(
+                download_pdfs(changed, output)[0]["status"], "failed"
+            )
+            self.assertEqual(path.read_bytes(), payload)
+
+    def test_pdf_only_manifest_and_access_stop(self):
+        rows, errors = targets(refresh=False)
+        self.assertEqual(len(rows), 130)
+        self.assertFalse(errors)
+        self.assertEqual(len({source_for(row["url"]).id for row in rows}), 130)
+        self.assertTrue(all(len(row["sha256"]) == 64 for row in rows))
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch(
+                "vehicle_catalog.download_pdfs.fetch",
+                side_effect=HTTPError(BASE, 429, "rate limit", {}, None),
+            ) as retrieve,
+        ):
+            result = download_pdfs(rows[:2], Path(directory))
+            retrieve.assert_called_once()
+            self.assertEqual(result[1]["status"], "not_attempted")
+
     def test_pattern_source_ids_are_unique(self):
         identifiers = [
             source_for(f"{BASE}2015/{stem}_ebrochure.pdf").id for stem in STEMS

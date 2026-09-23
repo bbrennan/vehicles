@@ -20,15 +20,13 @@ The user deleted all historical `toyota-honda-*` run folders. Their API records,
 
 The expanded run acquired 130 PDFs from 490 URLs: 40 official listing links plus 450 unverified historical pattern candidates. Text extraction succeeded for 129 PDFs / 2,944 pages; one image-only chart needs OCR/manual review. Layout output covers all 130 PDFs / 2,945 pages, but the chart contains no useful word evidence. No curated facts were produced.
 
-Across the expanded run and the two earlier runs there are 139 acquisition records, representing **130 unique PDF SHA-256 hashes**. The earlier nine PDFs are duplicate bytes already represented in the expanded run. All 139 artifact hashes and byte counts were verified. Artifact byte totals (including duplicates) are 1,191,836,014 bytes. Readable symlinks are under each raw run's `pdfs/` directory; managed data remains gitignored. The owner subsequently authorized the PDF-only release below; extracted data and manifests remain local.
+Across the expanded run and the two earlier runs there are 139 acquisition records, representing **130 unique PDF SHA-256 hashes**. The earlier nine PDFs are duplicate bytes already represented in the expanded run. All 139 artifact hashes and byte counts were verified. Artifact byte totals (including duplicates) are 1,191,836,014 bytes. Readable symlinks are under each raw run's `pdfs/` directory; managed data remains gitignored. The owner replaced hosted PDF delivery with direct Toyota downloads; extracted data and manifests remain local.
 
 ### Original PDF Download
 
-The [raw PDF release](https://github.com/bbrennan/vehicles/releases/tag/raw-pdfs-2026-09-22) contains a ZIP of all 130 unique acquired PDFs as ordinary `.pdf` files, not symlinks. Every archived file was byte-compared to its original. No extracted JSON/text/layout or acquisition manifests are included. GitHub's stored asset size and SHA-256 matched the local ZIP before publication.
+Run `python -m vehicle_catalog.download_pdfs` after installing requirements; see [README.md](README.md). The 130 known source URLs and checksums are in [config/toyota-pdfs.csv](config/toyota-pdfs.csv); the default refresh merges current official listing links. Live verification found 132 targets and successfully downloaded/hash-verified one ToyotaCare PDF in a temporary working directory, then skipped it on rerun. The full corpus was not redownloaded for this script check. Source availability can change; coverage is still partial.
 
-- ZIP size: 1,061,384,884 bytes; original PDF payloads: 1,156,546,513 bytes.
-- ZIP SHA-256: `50e2c89fec8f06832a0bb838bedf36522f804758b4bf1f8b059ed6e0d3cd6e5a`.
-- This release shares source documents, not reviewed facts, complete historical coverage or a managed-pipeline backup.
+The prior PDF ZIP was a GitHub Release asset only, never a Git object. It has been removed in favor of direct downloads; no Git history rewrite is needed. Original local PDFs and historical acquisition evidence remain intact. No extracted data is published.
 
 Current run IDs: `toyota-us-inventory-20260922` (five listing snapshots), `toyota-us-brochures-20260922` (download/text results), and `toyota-us-layout-20260922` (offline geometry). Inspect local `data/staged/<run>/report.json` and `events/`; discovery instead has `inventory.json`. These private-data paths are not distributed on GitHub.
 
@@ -105,4 +103,4 @@ General documents came from [Toyota's other brochures page](https://www.toyota.c
 4. Review Canadian/Mexican sources and terms independently before dedicated acquisition; do not relabel US data as those markets.
 5. Publish a small reviewed release only after rights and configuration/evidence checks pass.
 
-The managed corpus remains gitignored. Back up `data/` independently: the PDF release does not include the local provenance manifests, extracted data or review state needed to restore the pipeline.
+The managed corpus remains gitignored. Back up `data/` independently: the direct download manifest is not a backup of local provenance, extracted data or review state, and upstream files may disappear.

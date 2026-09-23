@@ -4,7 +4,7 @@
 
 - Product: Vehicle Reference Data Retrieval and Catalog Preparation.
 - Version: 0.2, 2026-09-22; adds proposed brochure narrative design; draft for project-owner review, not production acceptance.
-- Current operating state: US Toyota acquisition resumed by user authorization, MY2015 onward including already-published 2027 and general/accessory brochures. Public delivery includes code/docs and explicitly authorized original PDFs as a GitHub Release ZIP. Extracted JSON/text/layout and local manifests remain excluded. No curated catalog publication is scheduled.
+- Current operating state: US Toyota acquisition resumed by user authorization, MY2015 onward including already-published 2027 and general/accessory brochures. Public delivery includes code/docs and a source-URL/checksum manifest for direct local PDF downloads from Toyota. The hosted ZIP is removed; PDFs, extracted JSON/text/layout and local manifests stay out of Git. No curated catalog publication is scheduled.
 - Technical companion and operator commands: [ARD.md](ARD.md).
 - Decision authority: project owner for scope; designated source-use reviewer for rights; vehicle-data reviewer for factual applicability. Named assignees and release approver remain to be assigned.
 
@@ -46,7 +46,7 @@ Representative downstream questions include: Tundra trim differences; available 
 - VIN decoding, VIN-level records, individual inventory, pricing/offers for a specific dealer vehicle, and customer personal data.
 - Unbounded crawling, bypassing access controls, or silently expanding makes/markets.
 - Automatic OCR, reliable PDF table interpretation, automatic trim inheritance, fuzzy source-to-trim assignment, or universal applicability inferred from a general brochure.
-- Brochure redistribution beyond the explicitly owner-authorized original-PDF release, separate image reuse, model training, or external AI processing without separately established scope and rights.
+- Hosted brochure redistribution (replaced by direct local downloads), separate image reuse, model training, or external AI processing without separately established scope and rights.
 - Production hosting, a new retrieval service/OpenSearch index, and replacement of the existing inventory APIs.
 
 Lexus ToS may be assumed satisfied per user instruction, but Lexus is not currently in acquisition scope. Other makes remain part of the longer-term product mission.

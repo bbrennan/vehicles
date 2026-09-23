@@ -1,6 +1,6 @@
 # Toyota Retrieval Tasks
 
-Updated 2026-09-22. Acquisition resumed by user request. Scope: US Toyota brochures for MY2015 onward, including already-published 2027 editions and general/accessory brochures. Canada/Mexico are deferred, not implicitly covered. Public GitHub delivery includes docs, scripts, tests, schemas and the subsequently authorized PDF-only Release ZIP. Extracted JSON/text/layout, acquisition manifests, local environments and private data are excluded.
+Updated 2026-09-22. Acquisition resumed by user request. Scope: US Toyota brochures for MY2015 onward, including already-published 2027 editions and general/accessory brochures. Canada/Mexico are deferred, not implicitly covered. Public GitHub delivery includes docs, scripts, tests, schemas and source URLs/checksums for direct local Toyota downloads. PDFs, extracted JSON/text/layout, acquisition manifests, local environments and private data are excluded.
 
 - [x] Confirm US-first scope and public repository contents with project owner.
 - [x] Define the end-state curated schema and raw-to-curated mapping contract in PRD/ARD.
@@ -11,7 +11,8 @@ Updated 2026-09-22. Acquisition resumed by user request. Scope: US Toyota brochu
 - [x] Provide offline raw extraction with page text and table-layout evidence, without presenting unreviewed extraction as curated facts.
 - [x] Run tests and real-PDF extraction checks: 36 tests/lint pass; 130 layout outputs; original hashes verified; gaps in DATA_STATUS.md.
 - [x] Commit and push reviewed project files to https://github.com/bbrennan/vehicles; initial commit `7ef753f` verified against remote `main`. Raw/staged data excluded from Git history.
-- [x] Package and publish 130 original PDFs in [release raw-pdfs-2026-09-22](https://github.com/bbrennan/vehicles/releases/tag/raw-pdfs-2026-09-22); verify archive contents and GitHub asset checksum. No extracted data uploaded.
+- [x] Replace hosted ZIP with a clone-friendly direct Toyota downloader, 130 known source URLs/checksums, live listing refresh, regular PDF files and verified reruns. No extraction or GitHub archive dependency.
+- [x] Remove the old ZIP release asset; confirm it never entered Git history. Preserve local originals.
 
 ## Completion Rules
 

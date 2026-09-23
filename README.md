@@ -14,15 +14,23 @@ Auditable reference data for a deterministic vehicle-shopping agent: approved so
 
 ## Download Original PDFs
 
-[Download the 130 original Toyota PDFs (ZIP)](https://github.com/bbrennan/vehicles/releases/download/raw-pdfs-2026-09-22/toyota-us-original-pdfs-20260922.zip), or open the [PDF release](https://github.com/bbrennan/vehicles/releases/tag/raw-pdfs-2026-09-22).
+From any clone, install the Python requirements and run:
 
-The ZIP contains ordinary, readable-named `.pdf` files with their original bytes, not symlinks. It contains no extracted JSON, text, layout, or acquisition manifests. The uncompressed PDFs total about 1.16 GB. Release assets are separate from Git history and are not included by `git clone` or GitHub's source-code ZIP.
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m vehicle_catalog.download_pdfs
+```
 
-This is the acquired US Toyota corpus, not complete MY2015-onward coverage: 2015-2019 and other documented gaps remain unresolved. See [DATA_STATUS.md](DATA_STATUS.md). The PDF-only download can be opened directly, but the managed offline extraction CLI also requires local acquisition manifests; this ZIP is not a complete pipeline backup.
+This downloads directly from **Toyota.com**, never from a GitHub ZIP. Ordinary, readable-named PDFs go into `data/pdfs/`. No Poppler or extraction is involved. Use `--output /path/to/pdfs` to choose another local directory, or `--no-refresh` to use only the 130 known URLs in [config/toyota-pdfs.csv](config/toyota-pdfs.csv). The manifest is source URLs and checksums, not extracted vehicle data. The default also discovers PDF links from Toyota's five current brochure pages.
+
+Reruns hash-verify and skip existing PDFs. Corrupt local files and changed known upstream PDFs fail for review, without overwriting originals. Requests are sequential, capped at 600 PDFs and 100 MiB each; redirects are rejected, and HTTP 401/403/429 stops further requests. Failures produce a nonzero exit status and a local `.metadata/` report with provenance; these local JSON files are not extracted data and are not uploaded. Use a new destination for an intentional clean retry; do not change expected hashes without source review.
+
+Allow roughly 1.2 GB for the known corpus plus temporary download space. All currently discovered eligible US links are attempted, not every historical brochure: 2015-2019 gaps remain, and two current accessory PDFs previously exceeded the size/empty guard. Upstream removals or revisions can prevent reproducing the original corpus. See [DATA_STATUS.md](DATA_STATUS.md). The old hosted ZIP has been removed; it was never in Git history. These plain PDFs are for local use; use the managed collection commands below when preparing the raw-run layout expected by the extraction pipeline.
 
 ## Setup
 
-Requires Python 3.11+ and Poppler (`pdfinfo`, `pdftotext`) on `PATH`. Validated on macOS; other platforms and symlink behavior are unverified.
+Requires Python 3.11+. Poppler (`pdfinfo`, `pdftotext`) is needed only for extraction, not the download-only command. Validated on macOS; other platforms are unverified. The download-only command produces regular files, not symlinks. On Windows, use `.venv\Scripts\python.exe` instead of `.venv/bin/python`.
 
 ```sh
 git clone https://github.com/bbrennan/vehicles.git
@@ -84,7 +92,7 @@ data/curated/           Explicit reviewed mappings
 data/releases/          Validated versioned catalogs
 ```
 
-All `data/` remains gitignored. Only the explicitly selected original PDFs are shared through the release asset above; extracted data and local manifests are not uploaded. Back up the managed corpus separately. Keep raw runs together because readable PDF links point to hash-named originals. Never edit through those links.
+All `data/` remains gitignored. PDFs are downloaded locally from Toyota; neither PDFs nor extracted data or local manifests are uploaded. Back up the managed corpus separately. If using `--output` inside the repository but outside `data/`, add that directory to your local Git excludes. Managed raw-run PDF links point to hash-named originals; never edit through those links.
 
 Verify identity from document content, not filenames or dealer headings. Use [config/mapping.json](config/mapping.json) and [schemas/mapping.schema.json](schemas/mapping.schema.json) for reviewed mappings. Current facts cover features, measurements, ratings, colors and specifications. Missing means unknown; unavailable requires evidence. Preserve market, package conditions, units, methodology and footnotes.
 
@@ -114,6 +122,6 @@ Other methods: `get`, `colors`, `compare` (2-6 configurations within one market)
 
 ## Boundaries
 
-Toyota/Lexus ToS are assumed satisfied per project-owner instruction; active collection is Toyota-only. The owner explicitly authorized sharing these original PDFs on GitHub; that does not grant downstream users a new license to their contents. EPA, Honda, IIHS and third-party archive ingestion remain held. NHTSA tooling exists separately.
+Toyota/Lexus ToS are assumed satisfied per project-owner instruction; active collection is Toyota-only. Direct download does not grant downstream users a new license to PDF contents. EPA, Honda, IIHS and third-party archive ingestion remain held. NHTSA tooling exists separately.
 
 Production gates: historical coverage audit, representative complete model-year factual review, current-rights enforcement independent of old manifests, authenticated approvals, backup/restore, release rollback and runtime benchmarks. CA/MX and other makes require separate coverage work. Download counts never establish complete history.

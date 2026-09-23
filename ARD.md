@@ -233,6 +233,8 @@ Key decisions: retain original bytes rather than only parsed content; retain has
 
 ## 11. Toyota Collection and Raw Layout
 
+For clone users who only need original PDFs, `python -m vehicle_catalog.download_pdfs` merges [config/toyota-pdfs.csv](config/toyota-pdfs.csv) with current official listing links and writes regular PDFs to `data/pdfs` (or `--output`). `--no-refresh` uses the known list only. It reuses the first-party URL guard and bounded fetcher but performs no extraction and needs no Poppler. Hash verification permits safe skips; changed upstream bytes and conflicting local files fail without overwrite. Local `.metadata` provenance/reports are gitignored in the default destination. Downloads are sequential, capped at 600 targets/100 MiB each, reject redirects, and stop on HTTP 401/403/429. This flat PDF directory is not the managed raw-run contract below. The hosted ZIP was removed and never entered Git history.
+
 ```sh
 .venv/bin/python -m vehicle_catalog.toyota discover --run us-inventory-001 --minimum-year 2015 --through-year 2027
 .venv/bin/python -m vehicle_catalog.toyota download --inventory data/staged/us-inventory-001/inventory.json --run us-brochures-001 --max-documents 600
