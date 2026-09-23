@@ -10,7 +10,7 @@ Updated 2026-09-22. Acquisition resumed by user request. Scope: US Toyota brochu
 - [ ] Complete historical coverage: resolve 2015-2019 sources, alternate filenames, 11 redirects, two accessory size/empty failures, and the independent model/year/document denominator.
 - [x] Provide offline raw extraction with page text and table-layout evidence, without presenting unreviewed extraction as curated facts.
 - [x] Run tests and real-PDF extraction checks: 36 tests/lint pass; 130 layout outputs; original hashes verified; gaps in DATA_STATUS.md.
-- [ ] Commit and push reviewed project files to https://github.com/bbrennan/vehicles; verify remote commit.
+- [x] Commit and push reviewed project files to https://github.com/bbrennan/vehicles; initial commit `7ef753f` verified against remote `main`. Raw/staged data excluded.
 
 ## Completion Rules
 
