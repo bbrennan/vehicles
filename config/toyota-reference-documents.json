@@ -1,0 +1,119 @@
+{
+    "documents": [
+        {
+            "kind": "reference",
+            "make": "Toyota",
+            "title": "Toyota Accessory Portfolio",
+            "topic": "accessories",
+            "source": {
+                "id": "toyota-us-accessory-portfolio",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2026/toyota-accessory-portfolio-brochure.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22. Listed at https://www.toyota.com/brochures/other-brochures/. URL directory year is not vehicle applicability. Fitment requires separate evidence."
+            }
+        },
+        {
+            "kind": "reference",
+            "make": "Toyota",
+            "title": "Introducing Toyota Safety Sense",
+            "topic": "safety",
+            "version": "4.0",
+            "source": {
+                "id": "toyota-us-tss-4-0",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2026/introducing-toyota-safety-sense.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22. Listed as TSS 4.0 at https://www.toyota.com/brochures/other-brochures/. Version and applicability require document review."
+            }
+        },
+        {
+            "kind": "reference",
+            "make": "Toyota",
+            "title": "Toyota Safety Sense 3.0",
+            "topic": "safety",
+            "version": "3.0",
+            "source": {
+                "id": "toyota-us-tss-3-0",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/tss/CFA_TSS_3.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22. Listed at https://www.toyota.com/brochures/other-brochures/. Describes a system version; does not establish trim equipment."
+            }
+        },
+        {
+            "kind": "reference",
+            "make": "Toyota",
+            "title": "Toyota Safety Sense 2.5",
+            "topic": "safety",
+            "version": "2.5",
+            "source": {
+                "id": "toyota-us-tss-2-5",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/tss/CFA_TSS_2-5.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22. Listed at https://www.toyota.com/brochures/other-brochures/. Describes a system version; does not establish trim equipment."
+            }
+        },
+        {
+            "kind": "reference",
+            "make": "Toyota",
+            "title": "Toyota Safety Sense Precautions and Limitations",
+            "topic": "safety",
+            "source": {
+                "id": "toyota-us-tss-precautions",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/tcom/CFA_TSS_precautions.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22. Listed at https://www.toyota.com/brochures/other-brochures/. Preserve system-specific limitations; do not assume universal applicability."
+            }
+        },
+        {
+            "kind": "reference",
+            "make": "Toyota",
+            "title": "ToyotaCare",
+            "topic": "ownership",
+            "source": {
+                "id": "toyota-us-toyotacare",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/tcom/toyotacare.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22. Listed at https://www.toyota.com/brochures/other-brochures/. Eligibility, effective dates, time/mileage limits and exclusions require review; no universal used-vehicle coverage inference."
+            }
+        },
+        {
+            "kind": "reference",
+            "make": "Toyota",
+            "title": "ToyotaCare BEV",
+            "topic": "ownership",
+            "source": {
+                "id": "toyota-us-toyotacare-bev",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/tcom/toyotacare-bev.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22. Listed at https://www.toyota.com/brochures/other-brochures/. BEV program eligibility and limits require separate review; do not merge with other ToyotaCare coverage."
+            }
+        }
+    ]
+}

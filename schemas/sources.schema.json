@@ -1,0 +1,86 @@
+{
+  "$defs": {
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "acquisition_approved": {
+          "default": false,
+          "title": "Acquisition Approved",
+          "type": "boolean"
+        },
+        "adapter": {
+          "enum": [
+            "epa",
+            "nhtsa",
+            "document"
+          ],
+          "title": "Adapter",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "market": {
+          "enum": [
+            "US",
+            "CA",
+            "MX"
+          ],
+          "title": "Market",
+          "type": "string"
+        },
+        "publication_approved": {
+          "default": false,
+          "title": "Publication Approved",
+          "type": "boolean"
+        },
+        "publisher": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Publisher",
+          "type": "string"
+        },
+        "rights_reference": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rights Reference",
+          "type": "string"
+        },
+        "url": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "publisher",
+        "adapter",
+        "url",
+        "market",
+        "rights_reference"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "title": "Sources",
+      "type": "array"
+    }
+  },
+  "required": [
+    "sources"
+  ],
+  "title": "Sources",
+  "type": "object"
+}

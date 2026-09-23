@@ -1,0 +1,18 @@
+{
+    "schema_version": "0.1.0",
+    "release_id": "pilot-001",
+    "configurations": [],
+    "assignments": [],
+    "reviewed_facts": [],
+    "feature_vocabulary": {
+        "head_up_display": "Head-up display",
+        "heated_front_seats": "Heated front seats",
+        "heated_rear_seats": "Heated rear seats",
+        "ventilated_front_seats": "Ventilated front seats"
+    },
+    "specification_vocabulary": {},
+    "coverage_notes": [
+        "No configurations reviewed yet. This is a mapping template, not a populated vehicle catalog.",
+        "Target: all makes, new and used, at Toyota/Lexus dealerships in North America. Current adapters cover selected US source records only."
+    ]
+}

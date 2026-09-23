@@ -1,0 +1,882 @@
+{
+  "$defs": {
+    "Assignment": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "configuration_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Configuration Id",
+          "type": "string"
+        },
+        "review": {
+          "$ref": "#/$defs/Review"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "configuration_id",
+        "review"
+      ],
+      "title": "Assignment",
+      "type": "object"
+    },
+    "ColorFact": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "enum": [
+            "standard",
+            "optional",
+            "package",
+            "unavailable"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "code": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Code"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "color",
+          "title": "Kind",
+          "type": "string"
+        },
+        "location": {
+          "enum": [
+            "exterior",
+            "interior"
+          ],
+          "title": "Location",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "paired_color_codes": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Paired Color Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "location",
+        "name",
+        "availability"
+      ],
+      "title": "ColorFact",
+      "type": "object"
+    },
+    "Conditions": {
+      "additionalProperties": false,
+      "properties": {
+        "notes": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        },
+        "package_codes": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Package Codes",
+          "type": "array"
+        },
+        "production_from": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Production From"
+        },
+        "production_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Production To"
+        },
+        "regions": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Regions",
+          "type": "array"
+        }
+      },
+      "title": "Conditions",
+      "type": "object"
+    },
+    "Configuration": {
+      "additionalProperties": false,
+      "properties": {
+        "battery": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Battery"
+        },
+        "bed": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bed"
+        },
+        "body_style": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Body Style"
+        },
+        "cab": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cab"
+        },
+        "drivetrain": {
+          "anyOf": [
+            {
+              "enum": [
+                "FWD",
+                "RWD",
+                "AWD",
+                "4WD"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Drivetrain"
+        },
+        "engine": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Engine"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generation"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "make": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Make",
+          "type": "string"
+        },
+        "market": {
+          "enum": [
+            "US",
+            "CA",
+            "MX"
+          ],
+          "title": "Market",
+          "type": "string"
+        },
+        "model": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Model",
+          "type": "string"
+        },
+        "powertrain": {
+          "anyOf": [
+            {
+              "enum": [
+                "ICE",
+                "HEV",
+                "PHEV",
+                "BEV",
+                "FCEV"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Powertrain"
+        },
+        "transmission": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transmission"
+        },
+        "trim": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Trim",
+          "type": "string"
+        },
+        "wheels": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wheels"
+        },
+        "year": {
+          "maximum": 2200,
+          "minimum": 1900,
+          "title": "Year",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "market",
+        "year",
+        "make",
+        "model",
+        "trim",
+        "evidence"
+      ],
+      "title": "Configuration",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Locator",
+          "type": "string"
+        },
+        "original_value": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Original Value",
+          "type": "string"
+        },
+        "source_record_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "locator",
+        "source_record_id",
+        "original_value"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FeatureFact": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "enum": [
+            "standard",
+            "optional",
+            "package",
+            "unavailable"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "feature": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Feature",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "feature",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "feature",
+        "availability"
+      ],
+      "title": "FeatureFact",
+      "type": "object"
+    },
+    "MeasurementFact": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Basis",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "fuel": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fuel"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "measurement",
+          "title": "Kind",
+          "type": "string"
+        },
+        "metric": {
+          "enum": [
+            "fuel_economy_city",
+            "fuel_economy_highway",
+            "fuel_economy_combined",
+            "electric_range",
+            "total_range",
+            "electricity_consumption_combined",
+            "length",
+            "width",
+            "height",
+            "wheelbase",
+            "cargo_volume",
+            "towing_capacity",
+            "payload",
+            "seating_capacity",
+            "battery_capacity",
+            "charging_power",
+            "charging_duration",
+            "power",
+            "torque",
+            "msrp"
+          ],
+          "title": "Metric",
+          "type": "string"
+        },
+        "unit": {
+          "enum": [
+            "mpg_us",
+            "mpge_us",
+            "L/100km",
+            "mi",
+            "km",
+            "kWh/100mi",
+            "kWh/100km",
+            "mm",
+            "in",
+            "L",
+            "ft3",
+            "kg",
+            "lb",
+            "person",
+            "kWh",
+            "kW",
+            "min",
+            "hp",
+            "Nm",
+            "lb-ft",
+            "USD",
+            "CAD",
+            "MXN"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "minimum": 0,
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "metric",
+        "value",
+        "unit",
+        "basis"
+      ],
+      "title": "MeasurementFact",
+      "type": "object"
+    },
+    "RatingFact": {
+      "additionalProperties": false,
+      "properties": {
+        "agency": {
+          "enum": [
+            "NHTSA",
+            "IIHS",
+            "OTHER"
+          ],
+          "title": "Agency",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "rating",
+          "title": "Kind",
+          "type": "string"
+        },
+        "methodology": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Methodology",
+          "type": "string"
+        },
+        "published_applicability": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Published Applicability",
+          "type": "string"
+        },
+        "scale": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Scale",
+          "type": "string"
+        },
+        "test": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Test",
+          "type": "string"
+        },
+        "value": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "agency",
+        "test",
+        "methodology",
+        "scale",
+        "value",
+        "published_applicability"
+      ],
+      "title": "RatingFact",
+      "type": "object"
+    },
+    "Review": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "rationale": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rationale",
+          "type": "string"
+        },
+        "reviewed_on": {
+          "format": "date",
+          "title": "Reviewed On",
+          "type": "string"
+        },
+        "reviewer": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reviewer",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reviewer",
+        "reviewed_on",
+        "rationale",
+        "evidence"
+      ],
+      "title": "Review",
+      "type": "object"
+    },
+    "ReviewedFact": {
+      "additionalProperties": false,
+      "properties": {
+        "configuration_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Configuration Id",
+          "type": "string"
+        },
+        "fact": {
+          "discriminator": {
+            "mapping": {
+              "color": "#/$defs/ColorFact",
+              "feature": "#/$defs/FeatureFact",
+              "measurement": "#/$defs/MeasurementFact",
+              "rating": "#/$defs/RatingFact",
+              "specification": "#/$defs/SpecificationFact"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FeatureFact"
+            },
+            {
+              "$ref": "#/$defs/MeasurementFact"
+            },
+            {
+              "$ref": "#/$defs/RatingFact"
+            },
+            {
+              "$ref": "#/$defs/ColorFact"
+            },
+            {
+              "$ref": "#/$defs/SpecificationFact"
+            }
+          ],
+          "title": "Fact"
+        },
+        "review": {
+          "$ref": "#/$defs/Review"
+        }
+      },
+      "required": [
+        "configuration_id",
+        "fact",
+        "review"
+      ],
+      "title": "ReviewedFact",
+      "type": "object"
+    },
+    "SpecificationFact": {
+      "additionalProperties": false,
+      "properties": {
+        "attribute": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Attribute",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "specification",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "attribute",
+        "value"
+      ],
+      "title": "SpecificationFact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "assignments": {
+      "items": {
+        "$ref": "#/$defs/Assignment"
+      },
+      "title": "Assignments",
+      "type": "array"
+    },
+    "configurations": {
+      "items": {
+        "$ref": "#/$defs/Configuration"
+      },
+      "title": "Configurations",
+      "type": "array"
+    },
+    "coverage_notes": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Coverage Notes",
+      "type": "array"
+    },
+    "feature_vocabulary": {
+      "additionalProperties": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Feature Vocabulary",
+      "type": "object"
+    },
+    "release_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Release Id",
+      "type": "string"
+    },
+    "reviewed_facts": {
+      "items": {
+        "$ref": "#/$defs/ReviewedFact"
+      },
+      "title": "Reviewed Facts",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "0.1.0",
+      "default": "0.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "specification_vocabulary": {
+      "additionalProperties": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Specification Vocabulary",
+      "type": "object"
+    }
+  },
+  "required": [
+    "release_id",
+    "configurations",
+    "feature_vocabulary",
+    "coverage_notes"
+  ],
+  "title": "MappingPlan",
+  "type": "object"
+}

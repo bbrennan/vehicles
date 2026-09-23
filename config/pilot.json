@@ -1,0 +1,20 @@
+{
+    "makes": [
+        "Toyota"
+    ],
+    "markets": [
+        "US",
+        "CA",
+        "MX"
+    ],
+    "minimum_year": 2015,
+    "maximum_year": null,
+    "targets": [
+        {
+            "source_id": "nhtsa-19443",
+            "make": "Toyota",
+            "model": "RAV4",
+            "year": 2024
+        }
+    ]
+}

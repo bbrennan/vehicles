@@ -1,0 +1,709 @@
+{
+  "$defs": {
+    "Artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_count": {
+          "exclusiveMinimum": 0,
+          "title": "Byte Count",
+          "type": "integer"
+        },
+        "final_url": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Final Url",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "media_type": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Media Type",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "retrieved_at",
+        "final_url",
+        "media_type",
+        "sha256",
+        "byte_count"
+      ],
+      "title": "Artifact",
+      "type": "object"
+    },
+    "Candidate": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "fact": {
+          "discriminator": {
+            "mapping": {
+              "color": "#/$defs/ColorFact",
+              "feature": "#/$defs/FeatureFact",
+              "measurement": "#/$defs/MeasurementFact",
+              "rating": "#/$defs/RatingFact",
+              "specification": "#/$defs/SpecificationFact"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/FeatureFact"
+            },
+            {
+              "$ref": "#/$defs/MeasurementFact"
+            },
+            {
+              "$ref": "#/$defs/RatingFact"
+            },
+            {
+              "$ref": "#/$defs/ColorFact"
+            },
+            {
+              "$ref": "#/$defs/SpecificationFact"
+            }
+          ],
+          "title": "Fact"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "market": {
+          "enum": [
+            "US",
+            "CA",
+            "MX"
+          ],
+          "title": "Market",
+          "type": "string"
+        },
+        "source_identity": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Source Identity",
+          "type": "object"
+        },
+        "source_record_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "artifact_id",
+        "market",
+        "source_record_id",
+        "source_identity",
+        "fact"
+      ],
+      "title": "Candidate",
+      "type": "object"
+    },
+    "ColorFact": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "enum": [
+            "standard",
+            "optional",
+            "package",
+            "unavailable"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "code": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Code"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "color",
+          "title": "Kind",
+          "type": "string"
+        },
+        "location": {
+          "enum": [
+            "exterior",
+            "interior"
+          ],
+          "title": "Location",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "paired_color_codes": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Paired Color Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "location",
+        "name",
+        "availability"
+      ],
+      "title": "ColorFact",
+      "type": "object"
+    },
+    "Conditions": {
+      "additionalProperties": false,
+      "properties": {
+        "notes": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        },
+        "package_codes": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Package Codes",
+          "type": "array"
+        },
+        "production_from": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Production From"
+        },
+        "production_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Production To"
+        },
+        "regions": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Regions",
+          "type": "array"
+        }
+      },
+      "title": "Conditions",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Locator",
+          "type": "string"
+        },
+        "original_value": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Original Value",
+          "type": "string"
+        },
+        "source_record_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "locator",
+        "source_record_id",
+        "original_value"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FeatureFact": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "enum": [
+            "standard",
+            "optional",
+            "package",
+            "unavailable"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "feature": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Feature",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "feature",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "feature",
+        "availability"
+      ],
+      "title": "FeatureFact",
+      "type": "object"
+    },
+    "MeasurementFact": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Basis",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "fuel": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fuel"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "measurement",
+          "title": "Kind",
+          "type": "string"
+        },
+        "metric": {
+          "enum": [
+            "fuel_economy_city",
+            "fuel_economy_highway",
+            "fuel_economy_combined",
+            "electric_range",
+            "total_range",
+            "electricity_consumption_combined",
+            "length",
+            "width",
+            "height",
+            "wheelbase",
+            "cargo_volume",
+            "towing_capacity",
+            "payload",
+            "seating_capacity",
+            "battery_capacity",
+            "charging_power",
+            "charging_duration",
+            "power",
+            "torque",
+            "msrp"
+          ],
+          "title": "Metric",
+          "type": "string"
+        },
+        "unit": {
+          "enum": [
+            "mpg_us",
+            "mpge_us",
+            "L/100km",
+            "mi",
+            "km",
+            "kWh/100mi",
+            "kWh/100km",
+            "mm",
+            "in",
+            "L",
+            "ft3",
+            "kg",
+            "lb",
+            "person",
+            "kWh",
+            "kW",
+            "min",
+            "hp",
+            "Nm",
+            "lb-ft",
+            "USD",
+            "CAD",
+            "MXN"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "minimum": 0,
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "metric",
+        "value",
+        "unit",
+        "basis"
+      ],
+      "title": "MeasurementFact",
+      "type": "object"
+    },
+    "RatingFact": {
+      "additionalProperties": false,
+      "properties": {
+        "agency": {
+          "enum": [
+            "NHTSA",
+            "IIHS",
+            "OTHER"
+          ],
+          "title": "Agency",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "rating",
+          "title": "Kind",
+          "type": "string"
+        },
+        "methodology": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Methodology",
+          "type": "string"
+        },
+        "published_applicability": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Published Applicability",
+          "type": "string"
+        },
+        "scale": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Scale",
+          "type": "string"
+        },
+        "test": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Test",
+          "type": "string"
+        },
+        "value": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "agency",
+        "test",
+        "methodology",
+        "scale",
+        "value",
+        "published_applicability"
+      ],
+      "title": "RatingFact",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "acquisition_approved": {
+          "default": false,
+          "title": "Acquisition Approved",
+          "type": "boolean"
+        },
+        "adapter": {
+          "enum": [
+            "epa",
+            "nhtsa",
+            "document"
+          ],
+          "title": "Adapter",
+          "type": "string"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "market": {
+          "enum": [
+            "US",
+            "CA",
+            "MX"
+          ],
+          "title": "Market",
+          "type": "string"
+        },
+        "publication_approved": {
+          "default": false,
+          "title": "Publication Approved",
+          "type": "boolean"
+        },
+        "publisher": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Publisher",
+          "type": "string"
+        },
+        "rights_reference": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rights Reference",
+          "type": "string"
+        },
+        "url": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "publisher",
+        "adapter",
+        "url",
+        "market",
+        "rights_reference"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "SpecificationFact": {
+      "additionalProperties": false,
+      "properties": {
+        "attribute": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Attribute",
+          "type": "string"
+        },
+        "conditions": {
+          "$ref": "#/$defs/Conditions"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "specification",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "evidence",
+        "kind",
+        "attribute",
+        "value"
+      ],
+      "title": "SpecificationFact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "$ref": "#/$defs/Artifact"
+      },
+      "title": "Artifacts",
+      "type": "array"
+    },
+    "candidates": {
+      "items": {
+        "$ref": "#/$defs/Candidate"
+      },
+      "title": "Candidates",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "0.1.0",
+      "default": "0.1.0",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifacts",
+    "candidates"
+  ],
+  "title": "Candidates",
+  "type": "object"
+}

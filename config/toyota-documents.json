@@ -1,0 +1,49 @@
+{
+    "documents": [
+        {
+            "make": "Toyota",
+            "model": "Camry",
+            "year": 2025,
+            "source": {
+                "id": "toyota-us-camry-2025-official",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2025/camry_ebrochure.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22; first-party PDF discovered at https://www.toyotaofsomerset.com/brochures.htm. Declared year/model require PDF review."
+            }
+        },
+        {
+            "make": "Toyota",
+            "model": "Tundra",
+            "year": 2025,
+            "source": {
+                "id": "toyota-us-tundra-2025-official",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2025/tundra_ebrochure.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22; first-party PDF discovered at https://www.toyotaofsomerset.com/brochures.htm. Declared year/model require PDF review."
+            }
+        },
+        {
+            "make": "Toyota",
+            "model": "Corolla Cross",
+            "year": 2024,
+            "source": {
+                "id": "toyota-us-corolla-cross-2024-official",
+                "publisher": "Toyota Motor Sales, U.S.A., Inc.",
+                "adapter": "document",
+                "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/corollacross_ebrochure.pdf",
+                "market": "US",
+                "acquisition_approved": true,
+                "publication_approved": false,
+                "rights_reference": "User-directed Toyota ToS assumption 2026-09-22; first-party PDF discovered at https://www.toyotaofsomerset.com/brochures.htm. Dealer heading says 2025 but target URL says 2024; verify PDF. Shared gas/hybrid link, acquire once without inferring trim applicability."
+            }
+        }
+    ]
+}

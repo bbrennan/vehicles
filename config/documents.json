@@ -1,0 +1,34 @@
+{
+    "documents": [
+        {
+            "make": "Toyota",
+            "model": "RAV4",
+            "year": 2024,
+            "source": {
+                "id": "toyota-rav4-2024-brochure",
+                "publisher": "Toyota (archive attribution; document identity review pending)",
+                "adapter": "document",
+                "url": "https://www.auto-brochures.com/makes/Toyota/RAV4/Toyota_US%20RAV4_2024.pdf",
+                "market": "US",
+                "acquisition_approved": false,
+                "publication_approved": false,
+                "rights_reference": "2026-09-22: user instructed that Toyota and Lexus ToS may be assumed satisfied for this project; not independently verified. HOLD remains for this Auto-Brochures.com-hosted source because separate archive terms are unresolved. Existing sample remains unpublished pending host and factual review."
+            }
+        },
+        {
+            "make": "Honda",
+            "model": "CR-V",
+            "year": 2018,
+            "source": {
+                "id": "honda-cr-v-2018-brochure",
+                "publisher": "Honda (archive attribution; document identity review pending)",
+                "adapter": "document",
+                "url": "https://www.auto-brochures.com/makes/Honda/CR-V/Honda_US%20CR-V_2018.pdf",
+                "market": "US",
+                "acquisition_approved": false,
+                "publication_approved": false,
+                "rights_reference": "HOLD 2026-09-22: https://www.honda.com/privacy/terms-and-conditions restricts systematic retrieval and commercial copying on covered Honda sites. Archive terms applicability and underlying brochure reuse rights require separate review. Existing sample remains unpublished."
+            }
+        }
+    ]
+}

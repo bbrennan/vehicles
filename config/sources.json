@@ -1,0 +1,64 @@
+{
+    "sources": [
+        {
+            "id": "epa-47387",
+            "publisher": "FuelEconomy.gov / EPA",
+            "adapter": "epa",
+            "url": "https://www.fueleconomy.gov/ws/rest/vehicle/47387",
+            "market": "US",
+            "acquisition_approved": false,
+            "publication_approved": false,
+            "rights_reference": "HOLD 2026-09-22: https://www.fueleconomy.gov/feg/ORNL-disclaimer.htm grants specified noncommercial uses. Clarify applicability to API facts and commercial catalog development before further acquisition or publication."
+        },
+        {
+            "id": "nhtsa-19443",
+            "publisher": "NHTSA",
+            "adapter": "nhtsa",
+            "url": "https://api.nhtsa.gov/SafetyRatings/VehicleId/19443?format=json",
+            "market": "US",
+            "acquisition_approved": true,
+            "publication_approved": false,
+            "rights_reference": "User authorized bounded public-API research acquisition on 2026-09-22; https://www.nhtsa.gov/nhtsa-datasets-and-apis; commercial publication review remains pending"
+        },
+        {
+            "id": "epa-35734",
+            "publisher": "FuelEconomy.gov / EPA",
+            "adapter": "epa",
+            "url": "https://www.fueleconomy.gov/ws/rest/vehicle/35734",
+            "market": "US",
+            "acquisition_approved": false,
+            "publication_approved": false,
+            "rights_reference": "HOLD 2026-09-22: https://www.fueleconomy.gov/feg/ORNL-disclaimer.htm grants specified noncommercial uses. Clarify applicability to API facts and commercial catalog development before further acquisition or publication."
+        },
+        {
+            "id": "epa-35668",
+            "publisher": "FuelEconomy.gov / EPA",
+            "adapter": "epa",
+            "url": "https://www.fueleconomy.gov/ws/rest/vehicle/35668",
+            "market": "US",
+            "acquisition_approved": false,
+            "publication_approved": false,
+            "rights_reference": "HOLD 2026-09-22: https://www.fueleconomy.gov/feg/ORNL-disclaimer.htm grants specified noncommercial uses. Clarify applicability to API facts and commercial catalog development before further acquisition or publication."
+        },
+        {
+            "id": "epa-46715",
+            "publisher": "FuelEconomy.gov / EPA",
+            "adapter": "epa",
+            "url": "https://www.fueleconomy.gov/ws/rest/vehicle/46715",
+            "market": "US",
+            "acquisition_approved": false,
+            "publication_approved": false,
+            "rights_reference": "HOLD 2026-09-22: https://www.fueleconomy.gov/feg/ORNL-disclaimer.htm grants specified noncommercial uses. Clarify applicability to API facts and commercial catalog development before further acquisition or publication."
+        },
+        {
+            "id": "nhtsa-19599",
+            "publisher": "NHTSA",
+            "adapter": "nhtsa",
+            "url": "https://api.nhtsa.gov/SafetyRatings/VehicleId/19599?format=json",
+            "market": "US",
+            "acquisition_approved": true,
+            "publication_approved": false,
+            "rights_reference": "User authorized bounded public-API research acquisition on 2026-09-22; https://www.nhtsa.gov/nhtsa-datasets-and-apis; commercial publication review remains pending"
+        }
+    ]
+}
