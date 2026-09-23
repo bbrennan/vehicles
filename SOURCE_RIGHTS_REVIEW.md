@@ -6,7 +6,9 @@ Reviewed: 2026-09-22. Preliminary engineering due diligence, not a legal opinion
 
 On 2026-09-22, the user instructed: "You can assume any ToS for Toyota and Lexus are satisfied." Treat Toyota and Lexus terms of service as satisfied for the intended project use. This is a user-supplied project assumption, not independently verified contract evidence. No additional Toyota/Lexus ToS outreach is required to proceed with otherwise eligible first-party sources.
 
-This does not satisfy terms imposed by third-party hosts or data providers, including Auto-Brochures.com, FuelEconomy.gov, Honda, or IIHS. Legacy archive sources remain held; their acquired samples were deleted by the user. Factual identity, applicability and publication checks still apply. US Toyota acquisition has resumed by user authorization for MY2015 onward, including published 2027 and general/accessory brochures. Lexus, model training and marketing-image redistribution are not added. Public GitHub delivery excludes raw and extracted data.
+This does not satisfy terms imposed by third-party hosts or data providers, including Auto-Brochures.com, FuelEconomy.gov, Honda, or IIHS. Legacy archive sources remain held; their acquired samples were deleted by the user. Factual identity, applicability and publication checks still apply. US Toyota acquisition has resumed by user authorization for MY2015 onward, including published 2027 and general/accessory brochures. Lexus, model training and separate marketing-image reuse are not added.
+
+The owner subsequently explicitly authorized public GitHub delivery of the original PDFs, optionally zipped, while prohibiting extracted JSON uploads. Delivery uses a PDF-only Release ZIP; extracted text/layout and acquisition manifests also stay local. This supersedes the earlier code/docs-only delivery choice and relies on the same owner-supplied Toyota ToS assumption, not an independently verified license or a new license to downstream users. Historical manifests and their publication flags remain unchanged; this corpus-sharing decision does not approve curated facts for shopper use.
 
 ## Public Access Is Not Public Domain
 

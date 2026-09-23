@@ -12,6 +12,14 @@ Auditable reference data for a deterministic vehicle-shopping agent: approved so
 - [DATA_STATUS.md](DATA_STATUS.md): measured collection results and gaps.
 - [SOURCE_RIGHTS_REVIEW.md](SOURCE_RIGHTS_REVIEW.md): source-use decisions and holds.
 
+## Download Original PDFs
+
+[Download the 130 original Toyota PDFs (ZIP)](https://github.com/bbrennan/vehicles/releases/download/raw-pdfs-2026-09-22/toyota-us-original-pdfs-20260922.zip), or open the [PDF release](https://github.com/bbrennan/vehicles/releases/tag/raw-pdfs-2026-09-22).
+
+The ZIP contains ordinary, readable-named `.pdf` files with their original bytes, not symlinks. It contains no extracted JSON, text, layout, or acquisition manifests. The uncompressed PDFs total about 1.16 GB. Release assets are separate from Git history and are not included by `git clone` or GitHub's source-code ZIP.
+
+This is the acquired US Toyota corpus, not complete MY2015-onward coverage: 2015-2019 and other documented gaps remain unresolved. See [DATA_STATUS.md](DATA_STATUS.md). The PDF-only download can be opened directly, but the managed offline extraction CLI also requires local acquisition manifests; this ZIP is not a complete pipeline backup.
+
 ## Setup
 
 Requires Python 3.11+ and Poppler (`pdfinfo`, `pdftotext`) on `PATH`. Validated on macOS; other platforms and symlink behavior are unverified.
@@ -76,7 +84,7 @@ data/curated/           Explicit reviewed mappings
 data/releases/          Validated versioned catalogs
 ```
 
-All `data/` is gitignored and excluded from GitHub. Back it up separately. Keep raw runs together because readable PDF links point to hash-named originals. Never edit through those links.
+All `data/` remains gitignored. Only the explicitly selected original PDFs are shared through the release asset above; extracted data and local manifests are not uploaded. Back up the managed corpus separately. Keep raw runs together because readable PDF links point to hash-named originals. Never edit through those links.
 
 Verify identity from document content, not filenames or dealer headings. Use [config/mapping.json](config/mapping.json) and [schemas/mapping.schema.json](schemas/mapping.schema.json) for reviewed mappings. Current facts cover features, measurements, ratings, colors and specifications. Missing means unknown; unavailable requires evidence. Preserve market, package conditions, units, methodology and footnotes.
 
@@ -106,6 +114,6 @@ Other methods: `get`, `colors`, `compare` (2-6 configurations within one market)
 
 ## Boundaries
 
-Toyota/Lexus ToS are assumed satisfied per project-owner instruction; active collection is Toyota-only. EPA, Honda, IIHS and third-party archive ingestion remain held. NHTSA tooling exists separately. Publishing code does not redistribute source documents or grant rights to them.
+Toyota/Lexus ToS are assumed satisfied per project-owner instruction; active collection is Toyota-only. The owner explicitly authorized sharing these original PDFs on GitHub; that does not grant downstream users a new license to their contents. EPA, Honda, IIHS and third-party archive ingestion remain held. NHTSA tooling exists separately.
 
 Production gates: historical coverage audit, representative complete model-year factual review, current-rights enforcement independent of old manifests, authenticated approvals, backup/restore, release rollback and runtime benchmarks. CA/MX and other makes require separate coverage work. Download counts never establish complete history.
